@@ -12,6 +12,12 @@ projeto de tutorial da microsoft sobre o blazor
     - [Auto-Using for C#](https://marketplace.visualstudio.com/items?itemName=Fudge.auto-using): intelisense para C#
     - [C# Extensions](https://marketplace.visualstudio.com/items?itemName=jchannon.csharpextensions): C# IDE Extensions
 
+## Iniciando aplicação
+- iniciar aplicação
+  ```
+  dotnet watch
+  ```
+
 ## Estrutura
 - [`Program.cs`](./Program.cs) -> é o ponto de entrada da aplicação que inicia o servidor, configurações de services e middlewares.
 - [`App.razor`](./App.razor) -> é o componente root do app.
@@ -19,6 +25,10 @@ projeto de tutorial da microsoft sobre o blazor
 - [`BlazorApp.csproj`](./BlazorApp.csproj) -> define o BlazorApp e as dependencias que terá nele.
 - [`launchSettings.json`](./Properties/launchSettings.json) -> responsável pela config de variáveis de ambiente.
 
+## Anotações
+- CSS
+  - para criar classes CSS unicamente para o componente é necessário criar um arquivo no seguinte formato `NomeComponente.razor.css`. Ex: [Index.razor.css](Pages/Index.razor.css)
+  
 
 ### Referências
 - [tutorial projeto](https://dotnet.microsoft.com/en-us/learn/aspnet/blazor-tutorial/create)
