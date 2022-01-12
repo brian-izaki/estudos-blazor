@@ -1,4 +1,5 @@
 ﻿@page "/counter"
+@inject DialogService DialogService
 
 <PageTitle>Counter</PageTitle>
 
@@ -10,6 +11,7 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Increment</button>
 
+<RadzenButton Text="Decrement" Click="@DecrementCount" ButtonStyle="ButtonStyle.Danger"></RadzenButton>
 <button class="btn btn-danger" @onclick="DecrementCount">Decrement</button>
 
 @if (currentCount != 0)
@@ -17,6 +19,10 @@
     @* estou utilizando uma lambda (no JS chamam de arrow function) aqui... *@
     <button class="btn btn-secondary" @onclick="() => currentCount = 0">Reset</button>
 }
+
+<div class="mt-5">
+    <RadzenButton Text="Open modal" Click="@ShowInlineDialog" ButtonStyle="ButtonStyle.Success"></RadzenButton>
+</div>
 
 @code {
     private int currentCount = 0;
@@ -35,4 +41,19 @@
     {
         return currentCount * 2;
     }
+
+    async Task ShowInlineDialog()
+    {
+     var result = await DialogService.OpenAsync("Simple Dialog", ds =>
+        @<div>
+            <p class="mb-4">Total Count <b>@currentCount</b></p>
+            <div class="row">
+                <div class="col">
+                    <RadzenButton Text="Ok" Click="() => ds.Close(true)" Class="mr-1" Style="width: 80px;" />
+                    <RadzenButton Text="Cancel" Click="() => ds.Close(false)" ButtonStyle="ButtonStyle.Secondary" Class="mr-1" />
+                </div>
+            </div>
+        </div>);
+    }
+
 }
